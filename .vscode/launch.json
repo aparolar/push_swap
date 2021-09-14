@@ -1,0 +1,23 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+	
+		{
+			"preLaunchTask": "build",
+			"name": "(gdb) Iniciar",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/push_swap",
+			//"args": ["1a 2 3 -4", "--55", " -66a", "7a76 999 0 22"],
+            "args": ["19 6 1 4 17 15 3 8 18 12 5 10 14 13 16 20 7 2 9 11 "],
+			"stopAtEntry": false,
+			"cwd": "${workspaceFolder}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb"
+		}
+	]
+}

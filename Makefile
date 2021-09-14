@@ -6,13 +6,24 @@ O			=	obj/
 
 I			=	inc/
 
-SRCS		=	$Smain.c\
-				$Scolor.c\
-				$Sfinish.c\
-				$Sfractal.c\
-				$Shook.c\
-				$Simage.c\
-				$Sutils1.c
+SRCS		=	$Spush_swap.c\
+				$Slist_utils1.c\
+				$Slist_utils2.c\
+				$Sparse_utils1.c\
+				$Scheck_duplicates.c\
+				$Ssort.c\
+				$Ssort_utils1.c\
+				$Ssort_utils2.c\
+				$Ssa_sb_ss.c\
+				$Spa_pb.c\
+				$Sra_rb_rr.c\
+				$Srra_rrb_rrr.c\
+				$Sstats.c\
+				$Sjamie_sort.c\
+				$Sradix_sort.c\
+				$Sext_list_sub_size.c\
+				$Sext_list_sub_start.c\
+				$Sext_list_sub_end.c\
 
 OBJS		=	$(SRCS:$S%.c=$O%.o)
 
@@ -22,7 +33,7 @@ CC			=	@gcc
 
 DBGF		=	-g3 -fsanitize=address
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror $(DBGF)
 
 all:			$(NAME)
 
