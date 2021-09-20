@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 13:13:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/09/14 10:54:41 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/09/20 10:42:44 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void	quikly_sort(t_pa_collection *tpc)
 {
 	t_pa_list		*a;
 	int				rel;
+	int				i;
 
 	a = tpc->a->next;
+	rel = 0;
 	while (a)
 	{
 		rel += a->value;
@@ -88,17 +90,46 @@ void	quikly_sort(t_pa_collection *tpc)
 	}
 	rel /= ext_lst_get_size(tpc->a) - 1;
 	a = tpc->a->next;
-	//print_lists(tpc);
 	while (a && ext_lst_get_size(a) > 2 && find_min_value(tpc->a, INT_MIN) <= rel)
 	{
+		//print_lists(tpc);
 		a = tpc->a->next;
 		if (a->value <= rel)
 			push_b(tpc);
 		else
 			rotate_a(tpc);
 		a = tpc->a->next;
+		//print_lists(tpc);
 	}
-//	while (ext_lst_get_size(tpc->b) > 1)
-//		push_a(tpc);
+	while (ext_lst_get_size(tpc->b) > 1)
+	{
+		rotate_value_b(tpc, find_max_value(tpc->b));
+		push_a(tpc);
+		//print_lists(tpc);
+	}
 	//print_lists(tpc);
+}
+
+void	chunk_quick_sort(t_pa_collection *tpc)
+{
+	print_lists(tpc);
+	if (tpc->chunk_size > 0)
+	{
+		tpc->position += tpc->chunk_size;
+		while (tpc->a->next && tpc->chunk_size > 0)
+		{
+			push_b(tpc);
+			tpc->chunk_size--;
+		}
+		print_lists(tpc);
+		while (tpc->b->next)
+		{
+			rotate_value_b(tpc, find_max_value(tpc->b));
+			push_a(tpc);
+			rotate_a(tpc);
+		}
+		print_lists(tpc);
+		tpc->chunk_size = ext_lst_get_size(tpc->a) - tpc->position - 1;
+		chunk_quick_sort(tpc);
+	}
 }

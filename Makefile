@@ -33,7 +33,7 @@ CC			=	@gcc
 
 DBGF		=	-g3 -fsanitize=address
 
-FLAGS		=	-Wall -Wextra -Werror $(DBGF)
+FLAGS		=	$(DBGF) #-Wall -Wextra -Werror
 
 all:			$(NAME)
 

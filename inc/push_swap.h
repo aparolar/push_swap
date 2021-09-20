@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 11:26:13 by aparolar          #+#    #+#             */
-/*   Updated: 2021/09/13 19:28:41 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/09/18 09:46:54 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_pa_collection
 	int					min;
 	int					max;
 	int					med;
+	int					chunk_size;
+	int					position;
 	struct s_pa_list	*a;
 	struct s_pa_list	*b;
 }						t_pa_collection;
@@ -82,6 +84,7 @@ int			is_neg_reverse_sorted(t_pa_list *tpalist);
 int			have_negatives(t_pa_list *tpalist);
 int			have_positives(t_pa_list *tpalist);
 void		quikly_sort(t_pa_collection *tpc);
+void		chunk_quick_sort(t_pa_collection *tpc);
 int			find_node_value(t_pa_list *node, int value);
 int			find_min_value(t_pa_list *node, int min_value);
 int			find_max_value(t_pa_list *node);

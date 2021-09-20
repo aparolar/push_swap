@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 19:58:18 by aparolar          #+#    #+#             */
-/*   Updated: 2021/09/14 10:55:08 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/09/18 09:44:07 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ void	print_lists(t_pa_collection *tpc)
 void	start_sort(t_pa_collection *collection)
 {
 	if (!is_sorted(collection->a))
-		quikly_sort(collection);
-	while (!is_sorted(collection->a))
+		chunk_quick_sort(collection);
+		//quikly_sort(collection);
+	if (!is_sorted(collection->a))
 		jamie_sort(collection);
 	//print_lists(collection);
 }
