@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 13:13:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/09/20 10:42:44 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/09/24 11:59:39 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ void	quikly_sort(t_pa_collection *tpc)
 		a = tpc->a->next;
 		if (a->value <= rel)
 			push_b(tpc);
+		else if ((*a->end)->value <= rel)
+		{
+			reverse_rotate_a(tpc);
+			push_b(tpc);
+		}
 		else
 			rotate_a(tpc);
 		a = tpc->a->next;
@@ -112,7 +117,7 @@ void	quikly_sort(t_pa_collection *tpc)
 
 void	chunk_quick_sort(t_pa_collection *tpc)
 {
-	print_lists(tpc);
+	//print_lists(tpc);
 	if (tpc->chunk_size > 0)
 	{
 		tpc->position += tpc->chunk_size;
@@ -121,15 +126,18 @@ void	chunk_quick_sort(t_pa_collection *tpc)
 			push_b(tpc);
 			tpc->chunk_size--;
 		}
-		print_lists(tpc);
+		//print_lists(tpc);
 		while (tpc->b->next)
 		{
 			rotate_value_b(tpc, find_max_value(tpc->b));
 			push_a(tpc);
 			rotate_a(tpc);
 		}
-		print_lists(tpc);
-		tpc->chunk_size = ext_lst_get_size(tpc->a) - tpc->position - 1;
+		//print_lists(tpc);
+		if (ext_lst_get_size(tpc->a) - tpc->position - 1 > tpc->chunk)
+			tpc->chunk_size = tpc->chunk;
+		else
+			tpc->chunk_size = ext_lst_get_size(tpc->a) - tpc->position - 1;
 		chunk_quick_sort(tpc);
 	}
 }

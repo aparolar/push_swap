@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 11:26:13 by aparolar          #+#    #+#             */
-/*   Updated: 2021/09/18 09:46:54 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/09/23 12:03:55 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_pa_collection
 	int					max;
 	int					med;
 	int					chunk_size;
+	int					chunk;
 	int					position;
 	struct s_pa_list	*a;
 	struct s_pa_list	*b;
@@ -95,6 +96,10 @@ int			find_max_value(t_pa_list *node);
 
 void		jamie_sort(t_pa_collection *tpc);
 void		radix_sort(t_pa_collection *tpc);
+void		two_sort_a(t_pa_collection *tpc);
+void		three_sort_a(t_pa_collection *tpc);
+void		five_sort_a(t_pa_collection *tpc);
+void		two_stacks_simple_sort(t_pa_collection *tpc);
 
 /*
 **    Statistic Functions

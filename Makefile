@@ -24,6 +24,7 @@ SRCS		=	$Spush_swap.c\
 				$Sext_list_sub_size.c\
 				$Sext_list_sub_start.c\
 				$Sext_list_sub_end.c\
+				$Ssimple_sort.c\
 
 OBJS		=	$(SRCS:$S%.c=$O%.o)
 
