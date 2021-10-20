@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 16:11:49 by aparolar          #+#    #+#             */
-/*   Updated: 2021/09/02 17:21:49 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/10/19 17:44:51 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,63 +14,27 @@
 
 void	radix_sort(t_pa_collection *tpc)
 {
-	unsigned int	mask;
-	unsigned int	neg_mask;
-	int				sorted;
-	int				have_neg;
-	t_pa_list		*a;
+	int				max_bits;
+	int				i;
+	int				j;
+	int				size;
 
-	mask = 1;
-	sorted = 0;
-	neg_mask = INT_MIN;
-	while (mask < (unsigned int)neg_mask)
+	size = *tpc->a->size - 1;
+	max_bits = 0;
+	while ((size >> max_bits) != 0)
+		max_bits++;
+	i = -1;
+	while (++i < max_bits && !is_sorted(tpc->a))
 	{
-		a = ext_lst_get_start(tpc->a)->next;
-		while (a)
+		j = -1;
+		while (++j < size && !is_sorted(tpc->a))
 		{
-			if (a->value >= 0 && (a->value & mask) == 0)
-			{
-				rotate_value(tpc, a->value);
-				push_b(tpc);
-				a = ext_lst_get_start(tpc->a)->next;
-			}
+			if (((tpc->a->next->index >> i) & 1) == 1)
+				rotate_a(tpc);
 			else
-				a = a->next;
+				push_b(tpc);
 		}
-		sorted = is_reverse_sorted(ext_lst_get_start(tpc->b));
-		have_neg = have_positives(ext_lst_get_start(tpc->a));
-		while (ext_lst_get_start(tpc->b)->next)
+		while (tpc->b->next)
 			push_a(tpc);
-		if (sorted && !have_neg)
-			break;
-		mask = mask << 1;
 	}
-	/*
-	mask = 1;
-	while (mask > 0)
-	{
-		a = ext_lst_get_start(tpc->a)->next;
-		while (a)
-		{
-			if (a->value < 0 && (a->value & mask) == mask)
-			{
-				rotate_value(tpc, a->value);
-				push_b(tpc);
-				a = ext_lst_get_start(tpc->a)->next;
-			}
-			else
-				a = a->next;
-		}
-		sorted = is_sorted(ext_lst_get_start(tpc->b));
-		have_neg = have_negatives(tpc->a);
-		while (ext_lst_get_start(tpc->b)->next)
-		{
-			if (ext_lst_get_size(tpc->b) > 1 && sorted && !have_neg)
-				reverse_rotate_b(tpc);
-			push_a(tpc);
-		}
-		if (sorted && !have_neg)
-			break ;
-		mask = (mask << 1);
-	}*/
 }

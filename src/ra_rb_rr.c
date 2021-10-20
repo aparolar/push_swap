@@ -6,13 +6,13 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/24 11:29:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/08/24 16:59:36 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/10/19 17:48:07 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-int rotate_a(t_pa_collection *tpc)
+int	rotate_a(t_pa_collection *tpc)
 {
 	t_pa_list	*node;
 
@@ -24,7 +24,7 @@ int rotate_a(t_pa_collection *tpc)
 	return (1);
 }
 
-int rotate_b(t_pa_collection *tpc)
+int	rotate_b(t_pa_collection *tpc)
 {
 	t_pa_list	*node;
 
@@ -36,7 +36,7 @@ int rotate_b(t_pa_collection *tpc)
 	return (1);
 }
 
-int rotate_ab(t_pa_collection *tpc)
+int	rotate_ab(t_pa_collection *tpc)
 {
 	int			ret;
 	t_pa_list	*node;

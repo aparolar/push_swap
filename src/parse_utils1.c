@@ -6,17 +6,41 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/08/25 21:17:04 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:08:49 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static char *get_one_line_args(int argc, char **argv)
+static void	assign_indexs(t_pa_list *lst)
 {
-	char    *tmp;
-	char    *ret;
-	int     i;
+	t_pa_list	*node;
+	int			index;
+	int			value;
+
+	index = 0;
+	value = INT_MIN;
+	while (index++ < *lst->size)
+	{
+		node = lst->next;
+		while (node)
+		{
+			if (find_min_value(node, value) == node->value)
+			{
+				node->index = index;
+				value = node->value;
+				break ;
+			}
+			node = node->next;
+		}
+	}
+}
+
+static char	*get_one_line_args(int argc, char **argv)
+{
+	char	*tmp;
+	char	*ret;
+	int		i;
 
 	i = 2;
 	ret = ft_strdup(argv[1]);
@@ -60,10 +84,10 @@ static char	*is_number(char *str)
 	return (0);
 }
 
-static int  parse_arg(char *args, t_pa_list *tpalist)
+static int	parse_arg(char *args, t_pa_list *tpalist)
 {
 	char	*value;
-	int 	ret;
+	int		ret;
 
 	ret = 0;
 	while (*args)
@@ -99,6 +123,7 @@ size_t	parse_args(int argc, char **argv, t_pa_list *tpalist)
 	{
 		args = get_one_line_args(argc, argv);
 		ret = parse_arg(args, tpalist);
+		assign_indexs(tpalist);
 		free(args);
 		return (ret);
 	}
