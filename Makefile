@@ -25,7 +25,7 @@ CC			=	@gcc
 
 DBGF		=	-g3 -fsanitize=address
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror $(DBGF)
 
 $(NAME):		$(OBJS)
 				git submodule init

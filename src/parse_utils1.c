@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/10/20 10:08:49 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:50:20 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static char	*is_number(char *str)
 static int	parse_arg(char *args, t_pa_list *tpalist)
 {
 	char	*value;
+	long	number;
 	int		ret;
 
 	ret = 0;
@@ -97,10 +98,11 @@ static int	parse_arg(char *args, t_pa_list *tpalist)
 		else
 		{
 			value = is_number(args);
-			if (value)
+			number = ft_atol(args);
+			if (value && number >= INT_MIN && number <= INT_MAX)
 			{
 				if (tpalist)
-					add_new_node(tpalist, ft_atoi(args));
+					add_new_node(tpalist, (int)number);
 				args = value;
 				ret++;
 			}
