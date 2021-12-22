@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/20 13:15:05 by aparolar          #+#    #+#             */
-/*   Updated: 2021/10/20 10:45:45 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/10/24 19:21:19 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_pa_list	*initialize_list(int value)
 
 	tpalist = (t_pa_list *)ft_calloc(1, sizeof(t_pa_list));
 	tpalist->value = value;
-	tpalist->size = ft_calloc(1, sizeof(size_t));
+	tpalist->size = ft_calloc(1, sizeof(int));
 	tpalist->start = ft_calloc(1, sizeof(char *));
 	tpalist->end = ft_calloc(1, sizeof(char *));
 	*tpalist->size = 1;

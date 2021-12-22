@@ -6,11 +6,12 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/10/20 12:50:20 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/22 11:52:42 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+#include "../lib/libft/libft.h"
 
 static void	assign_indexs(t_pa_list *lst)
 {
@@ -84,6 +85,27 @@ static char	*is_number(char *str)
 	return (0);
 }
 
+static int	is_valid_number(char *str)
+{
+	char	*end;
+	char	*svalue;
+
+	end = str;
+	while (*end && *end != ' ')
+		end++;
+	svalue = ft_strrem(str, 0, end - str);
+	if (ft_is_valid_aint(svalue))
+	{
+		free(svalue);
+		return (1);
+	}
+	else
+	{
+		free(svalue);
+		return (0);
+	}
+}
+
 static int	parse_arg(char *args, t_pa_list *tpalist)
 {
 	char	*value;
@@ -99,7 +121,7 @@ static int	parse_arg(char *args, t_pa_list *tpalist)
 		{
 			value = is_number(args);
 			number = ft_atol(args);
-			if (value && number >= INT_MIN && number <= INT_MAX)
+			if (is_valid_number(args))// value && number >= INT_MIN && number <= INT_MAX)
 			{
 				if (tpalist)
 					add_new_node(tpalist, (int)number);

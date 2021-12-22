@@ -25,7 +25,7 @@ CC			=	@gcc
 
 DBGF		=	-g3 -fsanitize=address
 
-FLAGS		=	-Wall -Wextra -Werror $(DBGF)
+FLAGS		=	-Wall -Wextra -Werror
 
 $(NAME):		$(OBJS)
 				git submodule init
@@ -50,4 +50,4 @@ test:			re
 fullclean:		fclean
 				@make fclean -s -C lib/libft 2>/dev/null
 
-.PHONY:			all re clean fclean bonus
+.PHONY:			all re clean fclean
