@@ -25,11 +25,9 @@ CC			=	@gcc
 
 DBGF		=	-g3 -fsanitize=address
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror $(DBGF)
 
 $(NAME):		$(OBJS)
-				git submodule init
-				git submodule update
 				make -s -C lib/libft
 				$(CC) $(FLAGS) $(SRCS) $(LIBFT) -o $(NAME)
 
@@ -49,5 +47,11 @@ test:			re
 
 fullclean:		fclean
 				@make fclean -s -C lib/libft 2>/dev/null
+
+git_push:		fullclean
+				git add .
+				git status
+				git commit -m "Update $(shell date)"
+				git push
 
 .PHONY:			all re clean fclean

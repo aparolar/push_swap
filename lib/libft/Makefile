@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aparolar <aparolar@student.42madrid.c      +#+  +:+       +#+         #
+#    By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/22 00:14:29 by aparolar          #+#    #+#              #
-#    Updated: 2021/12/22 00:18:45 by aparolar         ###   ########.fr        #
+#    Updated: 2021/12/22 13:06:51 by aparolar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,9 +74,9 @@ SRCS		=	ft_memset.c\
 
 OBJS		=	$(SRCS:.c=.o)
 
-CC			=	@gcc $(FLAGS) -I. -O3
+CC			=	@gcc $(FLAGS) -I. -O3 $(DEBFLAGSX)
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra -Werror 
 
 DBGFLAGS	=	$(FLAGS) -g3
 

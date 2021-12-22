@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/12/22 11:52:42 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/22 13:17:02 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,11 @@ static int	is_valid_number(char *str)
 	char	*svalue;
 
 	end = str;
+	while (*str && *str == ' ')
+		str++;
 	while (*end && *end != ' ')
 		end++;
-	svalue = ft_strrem(str, 0, end - str);
+	svalue = ft_substr(str, 0, end - str);
 	if (ft_is_valid_aint(svalue))
 	{
 		free(svalue);
