@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/12/22 13:17:02 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/26 22:06:39 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ static int	is_valid_number(char *str)
 {
 	char	*end;
 	char	*svalue;
+	int		ret;
 
 	end = str;
 	while (*str && *str == ' ')
@@ -97,15 +98,11 @@ static int	is_valid_number(char *str)
 		end++;
 	svalue = ft_substr(str, 0, end - str);
 	if (ft_is_valid_aint(svalue))
-	{
-		free(svalue);
-		return (1);
-	}
+		ret = 1;
 	else
-	{
-		free(svalue);
-		return (0);
-	}
+		ret = 0;
+	free(svalue);
+	return (ret);
 }
 
 static int	parse_arg(char *args, t_pa_list *tpalist)
