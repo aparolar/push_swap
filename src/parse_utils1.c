@@ -6,36 +6,12 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/12/26 22:06:39 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/27 22:23:53 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 #include "../lib/libft/libft.h"
-
-static void	assign_indexs(t_pa_list *lst)
-{
-	t_pa_list	*node;
-	int			index;
-	int			value;
-
-	index = 0;
-	value = INT_MIN;
-	while (index++ < *lst->size)
-	{
-		node = lst->next;
-		while (node)
-		{
-			if (find_min_value(node, value) == node->value)
-			{
-				node->index = index;
-				value = node->value;
-				break ;
-			}
-			node = node->next;
-		}
-	}
-}
 
 static char	*get_one_line_args(int argc, char **argv)
 {
@@ -120,7 +96,7 @@ static int	parse_arg(char *args, t_pa_list *tpalist)
 		{
 			value = is_number(args);
 			number = ft_atol(args);
-			if (is_valid_number(args))// value && number >= INT_MIN && number <= INT_MAX)
+			if (is_valid_number(args))
 			{
 				if (tpalist)
 					add_new_node(tpalist, (int)number);

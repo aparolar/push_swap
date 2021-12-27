@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 11:26:13 by aparolar          #+#    #+#             */
-/*   Updated: 2021/10/20 10:50:35 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/27 22:24:45 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ t_pa_list	*extract_node(t_pa_list *node);
 */
 
 size_t		parse_args(int argc, char **argv, t_pa_list *tpalist);
+void		assign_indexs(t_pa_list *lst);
 
 /*
 **    Check Functions
