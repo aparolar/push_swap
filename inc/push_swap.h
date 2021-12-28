@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 11:26:13 by aparolar          #+#    #+#             */
-/*   Updated: 2021/12/27 22:24:45 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/28 10:17:20 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ typedef struct s_pa_list
 
 typedef struct s_pa_collection
 {
-	int					min;
-	int					max;
-	int					med;
-	int					chunk_size;
-	int					chunk;
-	int					position;
 	struct s_pa_list	*a;
 	struct s_pa_list	*b;
 }						t_pa_collection;

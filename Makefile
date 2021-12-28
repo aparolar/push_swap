@@ -38,9 +38,11 @@ re:				fullclean
 
 clean:
 				rm -rf $(OBJS)
+				@make clean -s -C lib/libft 2>/dev/null
 
-fclean:			clean		
+fclean:			clean
 				rm -rf $(NAME)
+				@make fclean -s -C lib/libft 2>/dev/null
 
 test:			re
 				./$(NAME) 1

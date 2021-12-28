@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 11:19:37 by aparolar          #+#    #+#             */
-/*   Updated: 2021/10/20 10:48:43 by aparolar         ###   ########.fr       */
+/*   Updated: 2021/12/28 10:16:50 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ static void	initialize_lists(t_pa_collection *tpc)
 {
 	tpc->a = initialize_list(0);
 	tpc->b = initialize_list(1);
-	tpc->chunk = 5;
-	tpc->chunk_size = tpc->chunk;
-	tpc->position = 0;
 }
 
 int	main(int argc, char **argv)
