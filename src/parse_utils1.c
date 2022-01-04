@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2021/12/27 22:23:53 by aparolar         ###   ########.fr       */
+/*   Updated: 2022/01/04 21:55:25 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ static char	*is_number(char *str)
 	digit = 0;
 	while (*str)
 	{
-		if (*str == '-' && !ft_isdigit(*(str + 1)))
+		if ((*str == '-' || *str == '+') && !ft_isdigit(*(str + 1)))
 			break ;
-		else if (*str == '-' && ft_isdigit(*(str + 1)))
+		else if ((*str == '-' || *str == '+') && ft_isdigit(*(str + 1)))
 			str = str;
 		else if (ft_isdigit(*str))
 			digit++;
@@ -96,7 +96,7 @@ static int	parse_arg(char *args, t_pa_list *tpalist)
 		{
 			value = is_number(args);
 			number = ft_atol(args);
-			if (is_valid_number(args))
+			if (value && is_valid_number(args))
 			{
 				if (tpalist)
 					add_new_node(tpalist, (int)number);
