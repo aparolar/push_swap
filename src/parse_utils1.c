@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2022/01/10 17:14:31 by aparolar         ###   ########.fr       */
+/*   Updated: 2022/01/10 17:44:47 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ static char	*is_number(char *str)
 	digit = 0;
 	while (*str)
 	{
-		if ((*str == '-' || *str == '+') && !ft_isdigit(*(str + 1)))
-			break ;
-		else if ((*str == '-' || *str == '+') && ft_isdigit(*(str + 1)))
-			str = str;
+		if ((*str == '-' || *str == '+'))
+		{
+			if (!ft_isdigit(*(str + 1)))
+				break ;
+		}
 		else if (ft_isdigit(*str))
 			digit++;
 		else if (*str == ' ')
