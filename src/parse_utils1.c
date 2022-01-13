@@ -6,7 +6,7 @@
 /*   By: aparolar <aparolar@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/23 10:59:09 by aparolar          #+#    #+#             */
-/*   Updated: 2022/01/10 17:44:47 by aparolar         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:11:35 by aparolar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ static int	is_valid_number(char *str)
 static int	parse_arg(char *args, t_pa_list *tpalist)
 {
 	char	*value;
-	long	number;
 	int		ret;
 
 	ret = 0;
@@ -96,11 +95,10 @@ static int	parse_arg(char *args, t_pa_list *tpalist)
 		else
 		{
 			value = is_number(args);
-			number = ft_atol(args);
 			if (value && is_valid_number(args))
 			{
 				if (tpalist)
-					add_new_node(tpalist, (int)number);
+					add_new_node(tpalist, (int)ft_atol(args));
 				args = value;
 				ret++;
 			}
